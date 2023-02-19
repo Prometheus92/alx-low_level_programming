@@ -12,7 +12,7 @@ int n;
 int num;
 
 srand(time(0));
-rand() - RAND_MAX / 2;
+n = rand() - RAND_MAX / 2;
 num = n % 10;
 
 if (num > 5)
