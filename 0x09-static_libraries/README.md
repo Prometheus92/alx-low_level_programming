@@ -6,12 +6,13 @@ A **library** is a package of code that is meant to be reused by many programs. 
 - A precompiled binary that contains the implementation of that functionality pre-compiled into a machine language.
 
 Libraries are precompiled for several reasons.
+
 - Libraries rarely change, they don't need to be recompiled often.
 - Since libraries are precompiled objects hence machine language, it prevents people from accessing or changing the source code.
 
 There are two types of libraries:
+
 - Static
 - dynamic
 
 ### Static Library (Archive)
-
