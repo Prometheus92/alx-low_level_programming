@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include "dog.h"
 /**
@@ -18,5 +17,5 @@ void print_dog(struct dog *d)
 
 	printf("Name: %s\n", name);
 	printf("Age: %f\n", age);
-	printf("Owner: %s", owner);
+	printf("Owner: %s\n", owner);
 }
