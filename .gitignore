@@ -2,3 +2,4 @@ test/*
 ./vscode
 *.exe
 test.c
+_putchar.c
