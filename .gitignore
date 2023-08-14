@@ -3,3 +3,4 @@ test/*
 *.exe
 test.c
 _putchar.c
+*.gch
