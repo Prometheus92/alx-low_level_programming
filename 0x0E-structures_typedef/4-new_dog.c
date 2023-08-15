@@ -40,8 +40,19 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
+	if (_copy(name) == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
 	dog->name = _copy(name);
 	dog->age = age;
+	if (_copy(owner) == NULL)
+	{
+		free(dog->name);
+		free(dog);
+		return (NULL);
+	}
 	dog->owner = _copy(owner);
 	return (dog);
 }
