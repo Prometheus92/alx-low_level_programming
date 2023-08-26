@@ -15,7 +15,14 @@ void print_all(const char * const format, ...)
 	while (format && format[i])
 	{
 		j = 0;
-		switch (format[i])
+		while (c_format[j])
+		{
+			if ((c_format[j] == format[i + 1]) && format[i + 1])
+			{
+				printf(", ");
+				break;
+			} j++;
+		} switch (format[i])
 		{
 			case 's':
 				str = va_arg(ptr, char *);
@@ -37,13 +44,6 @@ void print_all(const char * const format, ...)
 				break;
 			default:
 				break;
-		} while (c_format[j])
-		{
-			if (c_format[j] == format[i + 1])
-			{
-				printf(", ");
-				break;
-			} j++;
 		} i++;
 	} printf("\n"), va_end(ptr);
 }
