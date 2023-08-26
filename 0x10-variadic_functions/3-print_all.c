@@ -3,24 +3,23 @@
 /**
  * print_all - prints anything
  * @format: list of types of arguments passed to the function
- *
- * Return: nothing
  */
 void print_all(const char * const format, ...)
 {
 	va_list ptr;
 	char *str;
-	int i = 0;
+	int i = 0, j = 0;
+	const char c_format[] = "cifs";
 
 	va_start(ptr, format);
 	while (format && format[i])
 	{
+		j = 0;
 		switch (format[i])
 		{
 			case 's':
 				str = va_arg(ptr, char *);
-
-				if (str == NULL)
+				if (!str)
 				{
 					printf("(nil)");
 					break;
@@ -38,14 +37,13 @@ void print_all(const char * const format, ...)
 				break;
 			default:
 				break;
-		}
-		if ((format[i + 1] == 's' || format[i + 1] == 'i' || format[i + 1] == 'f' ||
-				format[i + 1] == 'c') && format[i + 1] != NULL)
+		} while (c_format[j])
 		{
-			printf(", ");
-		}
-		i++;
-	}
-	printf("\n");
-	va_end(ptr);
+			if (c_format[j] == format[i + 1])
+			{
+				printf(", ");
+				break;
+			} j++;
+		} i++;
+	} printf("\n"), va_end(ptr);
 }
