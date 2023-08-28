@@ -4,3 +4,4 @@ test/*
 test.c
 _putchar.c
 *.gch
+run.sh
