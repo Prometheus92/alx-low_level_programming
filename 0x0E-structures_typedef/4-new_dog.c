@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
  * _strcp - return copy of the string
- * @s1: string to be coppied
+ * @s: string to be coppied
  * Return: copy of the string
  */
 char *_strcp(char *s)
