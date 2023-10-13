@@ -1,43 +1,51 @@
 #include "variadic_functions.h"
 
 /**
- * print_all - function that prints anything
- * @format: list of types of arguments passed to the function
- * Return: nothing
+ * print_all - prints anything.
+ * @format: a list of types of arguments passed to the function.
+ *
+ * Return: no return.
  */
 void print_all(const char * const format, ...)
 {
-	int i;
-	char *str;
 	va_list ptr;
+	unsigned int i = 0, j, c = 0;
+	char *str;
+	const char f_list[] = "cifs";
 
 	va_start(ptr, format);
-	i = 0;
-	while (format[i])
+	while (format && format[i])
 	{
+		j = 0;
+		while (f_list[j])
+		{
+			if (format[i] == f_list[j] && c)
+			{
+				printf(", ");
+				break;
+			} j++;
+		}
 		switch (format[i])
 		{
 		case 'c':
-			printf("%c", va_arg(ptr, int));
+			printf("%c", va_arg(ptr, int)), c = 1;
 			break;
 		case 'i':
-			printf("%d", va_arg(ptr, int));
+			printf("%d", va_arg(ptr, int)), c = 1;
 			break;
 		case 'f':
-			printf("%f", va_arg(ptr, double));
+			printf("%f", va_arg(ptr, double)), c = 1;
 			break;
 		case 's':
-			str = va_arg(ptr, char *);
-			if (str == NULL)
+			str = va_arg(ptr, char *), c = 1;
+			if (!str)
+			{
 				printf("(nil)");
-			if (str != NULL)
-				printf("%s", str);
+				break;
+			}
+			printf("%s", str);
 			break;
-		default:
-			break;
-		}
-		i++;
+		} i++;
 	}
-	printf("\n");
-	va_end(ptr);
+	printf("\n"), va_end(ptr);
 }
