@@ -7,12 +7,13 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b;
+	int a, b, result;
+	char c;
 	int (*f)(int, int);
 
 	if (argc != 4)
 	{
-		printf("Too much arguments\n");
+		printf("Error\n");
 		exit(98);
 	}
 	a = atoi(argv[1]);
@@ -21,11 +22,18 @@ int main(int argc, char *argv[])
 
 	if (!f)
 	{
-		printf("function not found\n");
+		printf("Error\n");
 		exit(99);
 	}
 
-	printf("%d\n", f(a, b));
+	c = *argv[2];
+	if ((c == '/' || c == '%') && b == 0)
+	{
+		printf("Error\n");
+		exit(100);
+	}
+	result = f(a, b);
+	printf("%d\n", result);
 
 	return (0);
 }
